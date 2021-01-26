@@ -190,11 +190,9 @@
 <p>王兩瓶對兒子說：「即使你中學畢業，一輩子都幫別人打工，其中或許有我難以體會的歡喜和幸福。」</p>
 </blockquote>
 <p>從服役時讀《流》起算，每兩年讀一次東山彰良的新作似乎已成為一種儀式。</p>
-<p>有別於《流》和《我殺的人與殺我的人》這兩部時空橫跨數十年的長篇小說，《小小的地方》特別的以收錄六篇短篇小說來呈現。雖是短篇小說，但六篇故事的皆以西門町刺青街為舞台，從僅有九歲的主人公小武的視角闡述，每則圍繞著一位不同的關鍵角色串聯與開展故事，描述主角對刺青街這個成長大之地以及與人們互動的濃烈情感。</p>
-<p>作者雖長年居住在日本，但對西門町的場景與氛圍的描寫拿捏得十分恰當，閱讀的字裡行間奇能感受到刺青街的光影與氣味，奇妙地與自己高中時對西門町的記憶產生重疊。</p>
-<p>閱讀體驗上很像在看安倍夜郎的《深夜食堂》，簡短的篇幅、簡單的故事架構與人物，但篇篇故事峰迴路轉、高潮迭起，驚嘆之外也為故事角色的境遇與情感糾葛感到些許心痛與心酸。</p>
-<img src="/2020/03/21/a-small-place/a-small-place.png" class="" title="《小小的地方》">
-
+          <div class="read-more">
+            <a href="/2020/03/21/a-small-place/" class="read-more-link">閱讀更多</a>
+          </div>
         </div></article>
       <article class="post">
     <header class="post-header">
@@ -215,6 +213,33 @@
           <div class="read-more">
             <a href="/2020/03/14/the-price-of-democracy/" class="read-more-link">閱讀更多</a>
           </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2020/01/07/boolean-tricks-with-logical-operators/">邏輯運算子與布林值使用技巧</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-01-07
+        </span><span class="post-category">
+            <a href="/categories/JavaScript/">JavaScript</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="Double-NOT-運算子"><a href="#Double-NOT-運算子" class="headerlink" title="!! - Double NOT 運算子"></a>!! - Double NOT 運算子</h3><p><strong>!val</strong></p>
+<p>邏輯運算子 <code>!</code> 可將 truthy 與 falsy 的變數轉化為對向的 Boolean，同理可以直接使用 <code>!!</code> 將變數轉化為 Boolean。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> someInput = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">const</span> isValidInput = !!someInput</span><br><span class="line"><span class="built_in">console</span>.log(isValidInput) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h3 id="OR-運算子"><a href="#OR-運算子" class="headerlink" title="|| - OR 運算子"></a>|| - OR 運算子</h3><p><strong>val1 || val2</strong></p>
+<p>邏輯運算子 <code>||</code> 判斷 val1 為 truthy 則返回 val1， falsy 則返回 val2。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name1 = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">const</span> name2 = <span class="string">&#x27;Wang&#x27;</span></span><br><span class="line"><span class="keyword">const</span> defalutName1 = name1 || <span class="string">&#x27;Huang&#x27;</span></span><br><span class="line"><span class="keyword">const</span> defalutName2 = name2 || <span class="string">&#x27;Huang&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(defalutName1) <span class="comment">// Huang</span></span><br><span class="line"><span class="built_in">console</span>.log(defalutName2) <span class="comment">// Wang</span></span><br></pre></td></tr></table></figure>
+<h3 id="amp-amp-AND-運算子"><a href="#amp-amp-AND-運算子" class="headerlink" title="&amp;&amp; - AND 運算子"></a>&amp;&amp; - AND 運算子</h3><p><strong>val1 &amp;&amp; val2</strong></p>
+<p>邏輯運算子 <code>&amp;&amp;</code> 判斷 val1 為 falsy 則返回 val1， truthy 則返回 val2。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> log1 = <span class="literal">true</span></span><br><span class="line"><span class="keyword">const</span> log2 = <span class="literal">false</span></span><br><span class="line"><span class="keyword">const</span> user1 = log1 &amp;&amp; <span class="string">&#x27;Chen&#x27;</span></span><br><span class="line"><span class="keyword">const</span> user2 = log2 &amp;&amp; <span class="string">&#x27;Hu&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(user1) <span class="comment">// Chen</span></span><br><span class="line"><span class="built_in">console</span>.log(user2) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
         </div></article>
       <article class="post">
     <header class="post-header">
@@ -273,26 +298,6 @@
 <p>這幾年看韓國電影的時候，總有為什麼他們可以拍出《1987：黎明到來的那一天》、《我只是個計程車司機》這種不論在議題性與商業性都這麼出色的電影之感。</p>
           <div class="read-more">
             <a href="/2019/09/21/detention/" class="read-more-link">閱讀更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/09/01/futures/">《未來無恙》觀影心得</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-09-01
-        </span><span class="post-category">
-            <a href="/categories/Movie/">Movie</a>
-            </span>
-        </div>
-    </header>
-
-    <div class="post-content"><p>導演：賀照緹<br>上映日期：2019.08.30</p>
-<p>導演用了四年時間拍攝兩位東部偏鄉的少女，年僅 16 歲的他們經歷的不是我們常人以為的美好青春，因為各種家庭因素（很悲慘的那種）必須離開原生家庭獨自面對未來的人生。</p>
-          <div class="read-more">
-            <a href="/2019/09/01/futures/" class="read-more-link">閱讀更多</a>
           </div>
         </div></article>
       <nav class="pagination"><a class="next" href="/page/2/">

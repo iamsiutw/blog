@@ -90,6 +90,26 @@
         <div class="content-wrapper">
           <div id="content" class="content"><section id="posts" class="posts"><article class="post">
     <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/09/01/futures/">《未來無恙》觀影心得</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-09-01
+        </span><span class="post-category">
+            <a href="/categories/Movie/">Movie</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><p>導演：賀照緹<br>上映日期：2019.08.30</p>
+<p>導演用了四年時間拍攝兩位東部偏鄉的少女，年僅 16 歲的他們經歷的不是我們常人以為的美好青春，因為各種家庭因素（很悲慘的那種）必須離開原生家庭獨自面對未來的人生。</p>
+          <div class="read-more">
+            <a href="/2019/09/01/futures/" class="read-more-link">閱讀更多</a>
+          </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
       <h1 class="post-title"><a class="post-link" href="/2019/07/28/synonyms/">《出走巴黎》觀影心得</a>
         </h1>
 
@@ -125,6 +145,79 @@
           <div class="read-more">
             <a href="/2019/07/27/nina/" class="read-more-link">閱讀更多</a>
           </div>
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/06/06/div-opacity/">實作父層 div 有透明效果，子層 div 無透明</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-06-06
+        </span><span class="post-category">
+            <a href="/categories/CSS/">CSS</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="CSS-屬性-opacity-簡介"><a href="#CSS-屬性-opacity-簡介" class="headerlink" title="CSS 屬性 opacity 簡介"></a>CSS 屬性 opacity 簡介</h3><p>CSS opacity 屬性可讓 DOM 具有透明的效果，value 範圍 0 - 1，數值越低透明度越高。</p>
+<p>要注意的是，如果父層元素設有 opacity 屬性，效果會影響底下所有的子元素，例如父層設定 opacity 為 0.5，則子元素也具有 opacity 0.5 的透明效果，即使另外定義子元素的 opacity 為 1，也無法 override 父層的 opacity。</p>
+<p>如果今天有個需求，需要建立一個外層 div 有透明，但是內層 div 無透明的元件，該如何實作呢？</p>
+<p>此時就需要用到 RGBA 色彩空間，不需要在父層設定 opacity，直接使用 RGBA 設定父層 background color，利用第四個參數 alpha 設定透明度，就不會影響到子元素了。</p>
+<p>例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// HTML</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic box1&quot;</span>&gt;</span>    </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;inside-box&quot;</span>&gt;</span>受父層 opacity 影響 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic box2&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;inside-box&quot;</span>&gt;</span>無 opacity 效果的 BOX<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// <span class="selector-tag">CSS</span></span><br><span class="line"><span class="selector-class">.basic</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">500px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: column;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box1</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.7</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box1</span> <span class="selector-class">.inside-box</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box2</span> &#123;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">520px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.inside-box</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">background</span>: blue;</span><br><span class="line">  <span class="attribute">color</span>: yellow;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>結果：</p>
+<img src="/2019/06/06/div-opacity/div-opacity.png" class="">
+
+
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/04/22/placeholder/">修改 input 的 placeholder 屬性顏色</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-04-22
+        </span><span class="post-category">
+            <a href="/categories/CSS/">CSS</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="input-placeholder-簡介"><a href="#input-placeholder-簡介" class="headerlink" title="input placeholder 簡介"></a>input placeholder 簡介</h3><p><strong>input</strong> 是前端經常會使用到的 tag ，可讓使用者輸入內容與網站產生互動。</p>
+<p><strong>placeholder</strong> 是 <strong>input</strong> 的其中一項 property，讓 input 在 DOM 上產生偽元素文字作為提示，當 input 有 value 時即會消失。</p>
+<p><strong>::placeholder</strong> 選擇器讓開發者直接修改 plaerholder 的顏色。</p>
+<p>例如：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HTML</span></span><br><span class="line"></span><br><span class="line">&lt;<span class="selector-tag">div</span>&gt;</span><br><span class="line">  &lt;input class=&quot;colored&quot; type=&quot;text&quot; placeholder=&quot;紅色的 placeholder&quot;&gt;</span><br><span class="line">  &lt;<span class="selector-tag">br</span>&gt;</span><br><span class="line">  &lt;<span class="selector-tag">br</span>&gt;</span><br><span class="line">  &lt;input type=&quot;text&quot; placeholder=&quot;預設的 placeholder&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CSS</span></span><br><span class="line"><span class="selector-class">.colored</span>::placeholder &#123;</span><br><span class="line">  color :red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>結果：</p>
+<img src="/2019/04/22/placeholder/placeholder.png" class="">
+
+        </div></article>
+      <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><a class="post-link" href="/2019/04/16/calc/">calc() 運算</a>
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-04-16
+        </span><span class="post-category">
+            <a href="/categories/CSS/">CSS</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-content"><h3 id="calc-簡介"><a href="#calc-簡介" class="headerlink" title="calc( ) 簡介"></a>calc( ) 簡介</h3><p>calc( )可使用在 CSS 中運算數值，包含基本的加減乘除，而且屬性值還不用相同單位，方便開發者不用為了微調 UI 而計算數值到天荒地老。通常會用在 width 和 height 屬性。</p>
+<p>例如：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: calc(<span class="number">300px</span> - <span class="number">1rem</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="SCSS-使用變數預處理器"><a href="#SCSS-使用變數預處理器" class="headerlink" title="SCSS 使用變數預處理器"></a>SCSS 使用變數預處理器</h3><p>在 SCSS 格式的樣式檔案中，當有個特定的顏色或是數值很常被重複使用時，可以使用 $ 符號加 valuableName 組成變數，之後便可直接使用這個變數作為屬性值，如果未來遇到需要更換的情況，直接修改該變數，底下所以使用該變數的樣式便會套用新的屬性值。</p>
+<p>例如：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$primary-width</span>: <span class="number">100px</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.area1</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="variable">$primary-width</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.area2</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="variable">$primary-width</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="calc-內使用-SCSS-變數"><a href="#calc-內使用-SCSS-變數" class="headerlink" title="calc( ) 內使用 SCSS 變數"></a>calc( ) 內使用 SCSS 變數</h3><p>如果要在 calc( ) 中使用變數需特別注意，變數名稱必須使用 #{ } 包起來，calc( ) 才能正確運行。</p>
+<p>例如：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$primary-width</span>: <span class="number">100px</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.area</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: calc(#&#123;<span class="variable">$primary-width</span>&#125; - <span class="number">10rem</span>);</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div></article>
       <article class="post">
     <header class="post-header">

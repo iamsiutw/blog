@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="邏輯運算子與布林值使用技巧"/><link rel="alternate" href="/atom.xml" title="iamsiutw" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="https://iamsiutw.github.io/2020/01/07/boolean-tricks-with-logical-operators/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>邏輯運算子與布林值使用技巧 - iamsiutw</title>
+  <meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">iamsiutw</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於我
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">iamsiutw</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於我
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">邏輯運算子與布林值使用技巧
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-01-07
+        </span><span class="post-category">
+            <a href="/categories/JavaScript/">JavaScript</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Double-NOT-%E9%81%8B%E7%AE%97%E5%AD%90"><span class="toc-text">!! - Double NOT 運算子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OR-%E9%81%8B%E7%AE%97%E5%AD%90"><span class="toc-text">|| - OR 運算子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#amp-amp-AND-%E9%81%8B%E7%AE%97%E5%AD%90"><span class="toc-text">&amp;&amp; - AND 運算子</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="Double-NOT-運算子"><a href="#Double-NOT-運算子" class="headerlink" title="!! - Double NOT 運算子"></a>!! - Double NOT 運算子</h3><p><strong>!val</strong></p>
+<p>邏輯運算子 <code>!</code> 可將 truthy 與 falsy 的變數轉化為對向的 Boolean，同理可以直接使用 <code>!!</code> 將變數轉化為 Boolean。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> someInput = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">const</span> isValidInput = !!someInput</span><br><span class="line"><span class="built_in">console</span>.log(isValidInput) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h3 id="OR-運算子"><a href="#OR-運算子" class="headerlink" title="|| - OR 運算子"></a>|| - OR 運算子</h3><p><strong>val1 || val2</strong></p>
+<p>邏輯運算子 <code>||</code> 判斷 val1 為 truthy 則返回 val1， falsy 則返回 val2。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name1 = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">const</span> name2 = <span class="string">&#x27;Wang&#x27;</span></span><br><span class="line"><span class="keyword">const</span> defalutName1 = name1 || <span class="string">&#x27;Huang&#x27;</span></span><br><span class="line"><span class="keyword">const</span> defalutName2 = name2 || <span class="string">&#x27;Huang&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(defalutName1) <span class="comment">// Huang</span></span><br><span class="line"><span class="built_in">console</span>.log(defalutName2) <span class="comment">// Wang</span></span><br></pre></td></tr></table></figure>
+<h3 id="amp-amp-AND-運算子"><a href="#amp-amp-AND-運算子" class="headerlink" title="&amp;&amp; - AND 運算子"></a>&amp;&amp; - AND 運算子</h3><p><strong>val1 &amp;&amp; val2</strong></p>
+<p>邏輯運算子 <code>&amp;&amp;</code> 判斷 val1 為 falsy 則返回 val1， truthy 則返回 val2。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> log1 = <span class="literal">true</span></span><br><span class="line"><span class="keyword">const</span> log2 = <span class="literal">false</span></span><br><span class="line"><span class="keyword">const</span> user1 = log1 &amp;&amp; <span class="string">&#x27;Chen&#x27;</span></span><br><span class="line"><span class="keyword">const</span> user2 = log2 &amp;&amp; <span class="string">&#x27;Hu&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(user1) <span class="comment">// Chen</span></span><br><span class="line"><span class="built_in">console</span>.log(user2) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2020/03/14/the-price-of-democracy/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">《狂飆一夢》觀影心得</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2019/10/07/beats/">
+        <span class="next-text nav-default">《地下狂熱趴》觀影心得</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mar6861214@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://www.facebook.com/yanxiu.huang" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/iamsiutw" class="iconfont icon-github" title="github"></a>
+        </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">&</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="copyright-year">&copy;
+    2021
+    <span class="author">iamsiu</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

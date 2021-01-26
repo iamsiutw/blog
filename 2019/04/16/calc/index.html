@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="calc() 運算"/><link rel="alternate" href="/atom.xml" title="iamsiutw" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="https://iamsiutw.github.io/2019/04/16/calc/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>calc() 運算 - iamsiutw</title>
+  <meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">iamsiutw</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於我
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">iamsiutw</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於我
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">calc() 運算
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-04-16
+        </span><span class="post-category">
+            <a href="/categories/CSS/">CSS</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#calc-%E7%B0%A1%E4%BB%8B"><span class="toc-text">calc( ) 簡介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SCSS-%E4%BD%BF%E7%94%A8%E8%AE%8A%E6%95%B8%E9%A0%90%E8%99%95%E7%90%86%E5%99%A8"><span class="toc-text">SCSS 使用變數預處理器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#calc-%E5%85%A7%E4%BD%BF%E7%94%A8-SCSS-%E8%AE%8A%E6%95%B8"><span class="toc-text">calc( ) 內使用 SCSS 變數</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="calc-簡介"><a href="#calc-簡介" class="headerlink" title="calc( ) 簡介"></a>calc( ) 簡介</h3><p>calc( )可使用在 CSS 中運算數值，包含基本的加減乘除，而且屬性值還不用相同單位，方便開發者不用為了微調 UI 而計算數值到天荒地老。通常會用在 width 和 height 屬性。</p>
+<p>例如：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: calc(<span class="number">300px</span> - <span class="number">1rem</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="SCSS-使用變數預處理器"><a href="#SCSS-使用變數預處理器" class="headerlink" title="SCSS 使用變數預處理器"></a>SCSS 使用變數預處理器</h3><p>在 SCSS 格式的樣式檔案中，當有個特定的顏色或是數值很常被重複使用時，可以使用 $ 符號加 valuableName 組成變數，之後便可直接使用這個變數作為屬性值，如果未來遇到需要更換的情況，直接修改該變數，底下所以使用該變數的樣式便會套用新的屬性值。</p>
+<p>例如：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$primary-width</span>: <span class="number">100px</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.area1</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="variable">$primary-width</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.area2</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="variable">$primary-width</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="calc-內使用-SCSS-變數"><a href="#calc-內使用-SCSS-變數" class="headerlink" title="calc( ) 內使用 SCSS 變數"></a>calc( ) 內使用 SCSS 變數</h3><p>如果要在 calc( ) 中使用變數需特別注意，變數名稱必須使用 #{ } 包起來，calc( ) 才能正確運行。</p>
+<p>例如：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$primary-width</span>: <span class="number">100px</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.area</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: calc(#&#123;<span class="variable">$primary-width</span>&#125; - <span class="number">10rem</span>);</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2019/04/22/placeholder/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">修改 input 的 placeholder 屬性顏色</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2017/01/30/manchester-by-the-sea/">
+        <span class="next-text nav-default">《海邊的曼徹斯特》觀影心得</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mar6861214@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://www.facebook.com/yanxiu.huang" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/iamsiutw" class="iconfont icon-github" title="github"></a>
+        </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">&</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="copyright-year">&copy;
+    2021
+    <span class="author">iamsiu</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
