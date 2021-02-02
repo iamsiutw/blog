@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="來寫一個密碼產生器吧"/><link rel="alternate" href="/atom.xml" title="iamsiutw" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0" />
+<link rel="canonical" href="https://iamsiutw.github.io/2021/01/28/password-generator/"/>
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0" />
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":"","latex":false};
+</script>
+
+    <title>來寫一個密碼產生器吧 - iamsiutw</title>
+  <meta name="generator" content="Hexo 5.3.0"></head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">iamsiutw</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/archives/">
+        <li class="mobile-menu-item">文章列表
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分類
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">關於我
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">iamsiutw</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            文章列表
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            分類
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            關於我
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">來寫一個密碼產生器吧
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2021-01-28
+        </span><span class="post-category">
+            <a href="/categories/JavaScript/">JavaScript</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目錄</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BC%8F%E6%A6%82%E5%BF%B5"><span class="toc-text">程式概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BC%8F%E4%BB%8B%E9%9D%A2"><span class="toc-text">程式介面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E8%AA%AA%E6%98%8E"><span class="toc-text">功能說明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BC%8F%E9%82%8F%E8%BC%AF"><span class="toc-text">程式邏輯</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><h3 id="程式概念"><a href="#程式概念" class="headerlink" title="程式概念"></a>程式概念</h3><p>使用網頁前端基本技術 HTML, CSS, JavaScript 實作，練習目的放在 DOM 的操作上和 JS 的使用，UI 部分則使用 Bootstrap 5，介面簡單優雅即可，本文後續重點會放在 JS 的設計想法。</p>
+<h3 id="程式介面"><a href="#程式介面" class="headerlink" title="程式介面"></a>程式介面</h3><img src="/2021/01/28/password-generator/passwordGenerator.jpg" class="" title="密碼產生器">
+
+<a id="more"></a>
+
+<h3 id="功能說明"><a href="#功能說明" class="headerlink" title="功能說明"></a>功能說明</h3><p>表單共有 6 個欄位。</p>
+<p>第一個項目 <code>input</code> 欄位決定密碼長度，輸入值必須介於 4 - 16 之間。  </p>
+<p>第二到第五個項目為勾選框 <code>checkbox</code>，決定密碼的組成元素，包括英文字母大小寫、數字與特殊符號。</p>
+<p>第六個項目 <code>input</code> 欄位提供使用者自行輸入字元，輸入的字元將不會出現在產生的密碼字串裡。</p>
+<h3 id="程式邏輯"><a href="#程式邏輯" class="headerlink" title="程式邏輯"></a>程式邏輯</h3><p>首先使用瀏覽器提供的 API <code>getElementById</code> 取得表單欄位和 <code>button</code> DOM，並在產生密碼按鈕 <code>generatePasswordBtn</code> 監聽 <code>click</code> 事件綁定自定義函式 <code>generatePassword</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> passwordLength = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;passwordLength&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> lowercaseCheck = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;lowercaseCheck&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> uppercaseCheck = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;uppercaseCheck&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> numberCheck = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;numberCheck&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> symbolCheck = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;symbolCheck&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> excludeInput = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;excludeInput&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> resultText = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;passwordResult&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> generatePasswordBtn = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;generateBtn&#x27;</span>)</span><br><span class="line"></span><br><span class="line">generatePasswordBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>, generatePassword)</span><br></pre></td></tr></table></figure>
+<p>接下來討論如何產生隨機字符，有以下 2 種想法：</p>
+<p>第一種是先定義已經包含所有字符的字串，再產生隨機數字使用 <code>indexOf(n)</code> 取得字符串接產生最終的密碼字串。</p>
+<p>第二種是參考 <a target="_blank" rel="noopener" href="https://www.ascii-code.com/">ASCII Code</a> 表，同樣產生隨機數字後使用 JS 內建的 <code>String.fromCharCode(n)</code> 取得對應的字符，串接產生最終密碼字串。</p>
+<p>這邊使用第二種方法實現。</p>
+<p>首先定義產生隨機數字和產生字符的函示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 產生 33 到 126 之間的隨機整數</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createRandomNumber</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">94</span>) + <span class="number">33</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 傳入數字，回傳 fromCharCode(n) 產生的字符</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCharacter</span>(<span class="params">number</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 這邊傳入的參數 number 會是陣列，使用 Spread syntax ...</span></span><br><span class="line">  <span class="comment">// 一次傳入多個參數，這樣只要呼叫一次函示即可回傳最終的密碼字串</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">String</span>.fromCharCode(...number)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>到這邊我們已經可以產生密碼了，只要根據輸入的數字決定迴圈次數，使用 <code>createRandomNumber()</code> 產生隨機數字陣列，再當作參數傳入 <code>getCharacter()</code> 即可取得密碼字串。</p>
+<p>但是程式功能必須可以自定義密碼包含的字符樣式，例如定義密碼不得含有大寫英文字母，因次不是每次產生的隨機數字都可以拿來使用，我們再額外定義函示 <code>getCharCode()</code>，根據表單裡勾選的 <code>checkbox</code> 來決定是否要使用這個數字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCharCode</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 取得自行定義的例外字符</span></span><br><span class="line">  <span class="keyword">const</span> excludeStr = excludeInput.value</span><br><span class="line">  <span class="comment">// 產生隨機數字</span></span><br><span class="line">  <span class="keyword">const</span> num = createRandomNumber()</span><br><span class="line">  <span class="comment">// 檢查 num 對應的字符是否有在例外字符字串裡</span></span><br><span class="line">  <span class="comment">// 有的話再呼叫函示本身，重新跑一次流程</span></span><br><span class="line">  <span class="keyword">if</span> (excludeStr.indexOf(getCharacter([num])) &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> getCharCode()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 檢查是否包含小寫英文字母</span></span><br><span class="line">  <span class="comment">// 有勾選的話檢查 num 是否在小寫字母的 ASCII Code 範圍內</span></span><br><span class="line">  <span class="keyword">if</span> (lowercaseCheck.checked) &#123;</span><br><span class="line">    <span class="keyword">if</span> (num &gt;= <span class="number">97</span> &amp;&amp; num &lt;= <span class="number">122</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> num</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 檢查是否包含大寫英文字母</span></span><br><span class="line">  <span class="comment">// 有勾選的話檢查 num 是否在大寫字母的 ASCII Code 範圍內</span></span><br><span class="line">  <span class="keyword">if</span> (uppercaseCheck.checked) &#123;</span><br><span class="line">    <span class="keyword">if</span> (num &gt;= <span class="number">65</span> &amp;&amp; num &lt;= <span class="number">90</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> num</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 檢查是否包含數字 0 - 9</span></span><br><span class="line">  <span class="comment">// 有勾選的話檢查 num 是否在數字的 ASCII Code 範圍內</span></span><br><span class="line">  <span class="keyword">if</span> (numberCheck.checked) &#123;</span><br><span class="line">    <span class="keyword">if</span> (num &gt;= <span class="number">48</span> &amp;&amp; num &lt;= <span class="number">57</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> num</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 檢查是否包含特殊字元</span></span><br><span class="line">  <span class="comment">// 有勾選的話檢查 num 是否在特殊字元的 ASCII Code 範圍內</span></span><br><span class="line">  <span class="keyword">if</span> (symbolCheck.checked) &#123;</span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">      num &gt;= <span class="number">33</span> &amp;&amp; num &lt;= <span class="number">47</span> ||</span><br><span class="line">      num &gt;= <span class="number">58</span> &amp;&amp; num &lt;= <span class="number">64</span> ||</span><br><span class="line">      num &gt;= <span class="number">91</span> &amp;&amp; num &lt;= <span class="number">96</span> ||</span><br><span class="line">      num &gt;= <span class="number">123</span> &amp;&amp; num &lt;= <span class="number">126</span></span><br><span class="line">    ) &#123;</span><br><span class="line">      <span class="keyword">return</span> num</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//  都不符條件的話則再呼叫函示本身，重新跑一次流程</span></span><br><span class="line">  <span class="keyword">return</span> getCharCode()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最後定義 <code>generatePassword()</code> 函示</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generatePassword</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 檢查密碼長度</span></span><br><span class="line">  <span class="keyword">if</span> (</span><br><span class="line">    !passwordLength.value ||</span><br><span class="line">    <span class="built_in">Number</span>(passwordLength.value) &lt; <span class="number">4</span> ||</span><br><span class="line">    <span class="built_in">Number</span>(passwordLength.value) &gt; <span class="number">16</span></span><br><span class="line">  ) &#123;</span><br><span class="line">    resultText.innerText = <span class="string">&#x27;Password length should between 4 and 16.&#x27;</span></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 檢查是否有勾選至少一項密碼格式</span></span><br><span class="line">  <span class="keyword">if</span> (</span><br><span class="line">    !lowercaseCheck.checked &amp;&amp;</span><br><span class="line">    !uppercaseCheck.checked &amp;&amp;</span><br><span class="line">    !numberCheck.checked &amp;&amp;</span><br><span class="line">    !symbolCheck.checked</span><br><span class="line">  ) &#123;</span><br><span class="line">    resultText.innerText = <span class="string">&#x27;You must select at least one character set.&#x27;</span></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 產生數字陣列</span></span><br><span class="line">  <span class="keyword">const</span> arr = []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= <span class="built_in">Number</span>(passwordLength.value); i++) &#123;</span><br><span class="line">    arr.push(getCharCode())</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 產生最終密碼字串</span></span><br><span class="line">  resultText.innerText = getCharacter(arr)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最終成果可在 <a target="_blank" rel="noopener" href="https://codepen.io/yamsiu/pen/ZEBzXgP">CodePen</a> 上使用，完整程式碼可參考 <a target="_blank" rel="noopener" href="https://github.com/iamsiutw/Password-Generator">GitHub</a></p>
+
+      </div>
+      
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="next" href="/2021/01/19/merry-christmas-mr-lawrence/">
+        <span class="next-text nav-default">《俘虜》觀影心得</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:mar6861214@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a target="_blank" rel="noopener" href="https://twitter.com/Benny_Xiu" class="iconfont icon-twitter" title="twitter"></a>
+        <a target="_blank" rel="noopener" href="https://www.facebook.com/yanxiu.huang" class="iconfont icon-facebook" title="facebook"></a>
+        <a target="_blank" rel="noopener" href="https://github.com/iamsiutw" class="iconfont icon-github" title="github"></a>
+        </div><div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">&</span>
+  <span class="theme-info">
+    <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+  <span class="copyright-year">&copy;
+    2021
+    <span class="author">iamsiu</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
